@@ -136,10 +136,12 @@ function draw() {
 }
 
 function changeMusic(m) {
-    music.unity.pause();
-	music.power.pause();
-	music.dance.pause();
-	music[m].play();
+	if (music.allow) {
+	    music.unity.pause();
+		music.power.pause();
+		music.dance.pause();
+		music[m].play();
+	}
 }
 
 function distance(a, b, c, d) {
@@ -449,13 +451,20 @@ function mouseClicked() {
 	}
 
 	if (distance(mouseX, mouseY, menu.time.x*block+gameWidth/2, menu.time.y*block+gameHeight/2) < block*8) {
+		music.allow = true;
 		music.unity.muted = !music.unity.muted;
 	    music.power.muted = !music.power.muted;
 	    music.dance.muted = !music.dance.muted;
 	    music.death.muted = !music.death.muted;
 	    music.yum.muted = !music.yum.muted;
-		if (!game) {
-		    changeMusic("dance");
+		if (game) {
+		    if (player.speed == 1) {
+				changeMusic("power");
+		    } else {
+		    	changeMusic("unity");
+		    }
+		} else {
+			changeMusic("dance");
 		}
   		
 	}
