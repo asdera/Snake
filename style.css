@@ -4,24 +4,14 @@ body {
 	font-family: "Comic Sans MS", cursive, sans-serif
 }
 
-table, tr, td {
-	border: 5px solid blue;
-}
-
-table {
-	width: 1000px;
-	top: 640px;
-	left: 0px;
-	right: 0px;
+.center {
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	user-select: none;
 	margin: auto;
 	position: absolute;
-	border-collapse: collapse;
-}
-
-td {
-	font-size: 18px;
-	padding: 30px;
-	background-color: skyblue;
-	width: 500px;
-	height: 100px;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
 }
